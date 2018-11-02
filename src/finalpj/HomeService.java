@@ -58,10 +58,10 @@ public class HomeService {
         
     }
     
-     boolean getRestaurant(String Username) {
+     boolean getRestaurant(String name) {
         int count = 0;
         MongoCollection<Document> col = DB.getdatabase().getCollection("Restaurant");
-        Document doc = new Document("Username", Username);
+        Document doc = new Document("name", name);
         try {
             count = (int) col.count(doc);
         } finally {
