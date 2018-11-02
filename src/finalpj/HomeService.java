@@ -57,5 +57,22 @@ public class HomeService {
         tablerest.setModel(model);
         
     }
+    
+     boolean getRestaurant(String Username) {
+        int count = 0;
+        MongoCollection<Document> col = DB.getdatabase().getCollection("Restaurant");
+        Document doc = new Document("Username", Username);
+        try {
+            count = (int) col.count(doc);
+        } finally {
+
+        }
+        if (count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 
 }

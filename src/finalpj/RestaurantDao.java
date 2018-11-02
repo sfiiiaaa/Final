@@ -35,7 +35,7 @@ public class RestaurantDao {
         db = connectData.getdatabase();
     }
     
-    public String getRestauran(String restname){
+    public String getRestaurant(String restname){
         BasicDBObject query = new BasicDBObject();
         BasicDBObject fields = new BasicDBObject("name", restname);
         MongoCursor<Document> c = connectData.getdatabase().getCollection("Restaurant").find(fields).iterator();
