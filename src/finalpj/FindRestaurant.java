@@ -6,6 +6,8 @@
 package restaurant;
 
 import finalpj.HomeService;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +20,9 @@ public class FindRestaurant extends javax.swing.JFrame {
      */
     public FindRestaurant() {
         initComponents();
+        String[] columnNames = {"NameRestaurant"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        resttable.setModel(model);
     }
 
     /**
@@ -155,6 +160,9 @@ public class FindRestaurant extends javax.swing.JFrame {
         
         if(home.checkLenghtChar(restname.getText()) == true){
             home.findData(resttable,restname.getText());
+        }else {
+            JOptionPane.showMessageDialog(null, "ตัวอักษรเกิน 50 ตัวอักษร กรุณากรอกใหม่อีกครั้ง", "Warning!", JOptionPane.ERROR_MESSAGE);
+            restname.setText("");
         }
         
 

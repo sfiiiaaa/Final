@@ -49,10 +49,12 @@ public class HomeService {
        BasicDBObject fields = new BasicDBObject("name", new BasicDBObject("$regex", restname));
        MongoCursor<Document> c = DB.getdatabase().getCollection("Restaurant").find(fields).iterator();
        
-       if (c != null) {
+       if (c.hasNext() == true) {
             while (c.hasNext()) {
                 model.addRow(new Object[]{c.next().get("name").toString()});
             }
+        } else {
+            model.addRow(new Object[]{"ไม่พบร้านอาหารที่ต้องการ"});
         }
         tablerest.setModel(model);
         
