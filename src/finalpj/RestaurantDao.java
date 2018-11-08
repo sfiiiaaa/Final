@@ -5,7 +5,6 @@
  */
 package finalpj;
 
-
 import com.mongodb.client.MongoCursor;
 import javax.swing.JOptionPane;
 import com.mongodb.BasicDBObject;
@@ -14,6 +13,7 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import java.util.ArrayList;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -22,31 +22,33 @@ import org.bson.conversions.Bson;
  * @author DELL
  */
 public class RestaurantDao {
-    
+
     MongoClientURI uri;
     MongoClient client;
     MongoDatabase db;
     BasicDBObject insert = new BasicDBObject();
     MongoCollection collection;
     ConnectDB connectData;
-    
-    RestaurantDao(){
+
+    RestaurantDao() {
         connectData = new ConnectDB();
         db = connectData.getdatabase();
     }
-    
-    public String getRestaurant(String restname){
-        BasicDBObject query = new BasicDBObject();
-        BasicDBObject fields = new BasicDBObject("name", restname);
+
+    public ArrayList<String> findRestaurantByName(String restname) {
+
+     
+        BasicDBObject fields = new BasicDBObject("name", new BasicDBObject("$regex", restname));
         MongoCursor<Document> c = connectData.getdatabase().getCollection("Restaurant").find(fields).iterator();
-       
+        ArrayList<String> arr = new ArrayList<String>();
+
         if (c != null) {
             while (c.hasNext()) {
-                return c.next().get("name").toString();
+                arr.add(c.next().get("name").toString());
             }
         }
-        
-        return "";
+
+        return arr;
     }
-    
+
 }

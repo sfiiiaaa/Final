@@ -5,7 +5,9 @@
  */
 package restaurant;
 
-import finalpj.HomeService;
+import finalpj. RestaurantService;
+import finalpj.RestaurantService;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -156,15 +158,29 @@ public class FindRestaurant extends javax.swing.JFrame {
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
         // TODO add your handling code here:
-        HomeService home =  new HomeService();
-        
-        if(home.checkLenghtChar(restname.getText()) == true){
-            home.findData(resttable,restname.getText());
-        }else {
+        RestaurantService home = new  RestaurantService();
+        String[] columnNames = {"NameRestaurant"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+        ArrayList<String> arr = new ArrayList<String>();
+
+        arr = home.searchdRestaurant(restname.getText());
+
+        if (arr.size() != 0) {
+            for (int i = 0; i < arr.size(); i++) {
+                model.addRow(new Object[]{arr.get(i)});
+            }
+        } else if(home.checkLenghtChar(restname.getText()) == true){
+            model.addRow(new Object[]{"ไม่พบร้านอาหารที่ต้องการ"});
+        }
+
+        if (home.checkLenghtChar(restname.getText()) == false) {
             JOptionPane.showMessageDialog(null, "ตัวอักษรเกิน 50 ตัวอักษร กรุณากรอกใหม่อีกครั้ง", "Warning!", JOptionPane.ERROR_MESSAGE);
             restname.setText("");
         }
-        
+
+        resttable.setModel(model);
+
 
     }//GEN-LAST:event_findButtonActionPerformed
 
