@@ -30,7 +30,7 @@ public class RestaurantDao {
     MongoCollection collection;
     ConnectDB connectData;
 
-    RestaurantDao() {
+   public RestaurantDao() {
         connectData = new ConnectDB();
         db = connectData.getdatabase();
     }
@@ -49,6 +49,22 @@ public class RestaurantDao {
         }
 
         return arr;
+    }
+
+       public boolean getRestaurant(String name) {
+        int count = 0;
+        MongoCollection<Document> col = connectData.getdatabase().getCollection("Restaurant");
+        Document doc = new Document("name", name);
+        try {
+            count = (int) col.count(doc);
+        } finally {
+
+        }
+        if (count > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

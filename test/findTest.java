@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import finalpj.HomeService;
+import finalpj.RestaurantDao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,42 +39,37 @@ public class findTest {
 
      @Test
     public void TestCheckFindName() {
-        HomeService hs = new HomeService();
-        boolean test = hs.getRestaurant("มู๋กะชีส");
+        RestaurantDao dao = new RestaurantDao();
+        boolean test = dao.getRestaurant("มู๋กะชีส");
         assertEquals(true, test);
     }
 
     @Test
     public void TestCheckFindName2() {
-        HomeService hs = new HomeService();
-        boolean test = hs.getRestaurant("พุงกาง");
+        RestaurantDao dao = new RestaurantDao();
+        boolean test = dao.getRestaurant("พุงกาง");
         assertEquals(false, test);
     }
 
     @Test
     public void TestCheckFindName3() {
-        HomeService hs = new HomeService();
-        boolean test = hs.getRestaurant("หนมนำแหนม");
+        RestaurantDao dao = new RestaurantDao();
+        boolean test = dao.getRestaurant("หนมนำแหนม");
         assertEquals(false, test);
     }
 
     @Test
     public void TestCheckFindName4() {
-        HomeService hs = new HomeService();
-        boolean test = hs.getRestaurant("ชาบูตัวดูด");
+        RestaurantDao dao = new RestaurantDao();
+        boolean test = dao.getRestaurant("ชาบูตัวดูด");
         assertEquals(false, test);
     }
 
     @Test
     public void TestCheckFindName5() {
-        HomeService hs = new HomeService();
-        boolean test = hs.getRestaurant("ติ๋มส้มตำ");
+        RestaurantDao dao = new RestaurantDao();
+        boolean test = dao.getRestaurant("ติ๋มส้มตำ");
         assertEquals(false, test);
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
