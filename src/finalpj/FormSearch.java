@@ -15,12 +15,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author USER
  */
-public class FindRestaurant extends javax.swing.JFrame {
+public class FormSearch extends javax.swing.JFrame {
 
     /**
      * Creates new form FindRestaurant
      */
-    public FindRestaurant() {
+    public FormSearch() {
         initComponents();
         String[] columnNames = {"NameRestaurant"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
@@ -205,20 +205,23 @@ public class FindRestaurant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FindRestaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormSearch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FindRestaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormSearch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FindRestaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormSearch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FindRestaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormSearch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FindRestaurant().setVisible(true);
+                new FormSearch().setVisible(true);
             }
         });
     }
